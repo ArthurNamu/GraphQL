@@ -4,7 +4,8 @@ using CommanderGQL.Models;
 namespace CommanderGQL.GraphQL;
 public class Query
 {
-    public IQueryable<Platform> GetPlatform([Service] AppDBContext context)
+    [UseDbContext(typeof(AppDBContext))]
+    public IQueryable<Platform> GetPlatform([ScopedService] AppDBContext context)
     {
         return context.Platforms;
     }
