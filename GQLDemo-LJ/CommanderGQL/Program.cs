@@ -18,6 +18,12 @@ builder.Services
 var app = builder.Build();
 
 
-app.MapGet("/", () => "Hello World!");
+//app.MapGet("/", () => "Hello World!");
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGraphQL();
+});
 
 app.Run();
