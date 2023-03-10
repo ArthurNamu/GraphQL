@@ -10,5 +10,11 @@ public class Query
     {
         return context.Platforms;
     }
+    [UseDbContext(typeof(AppDBContext))]
+    [UseProjection]
+    public IQueryable<Command> GetCommand([ScopedService] AppDBContext context)
+    {
+        return context.Commands;
+    }
 
 }
