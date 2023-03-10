@@ -3,6 +3,7 @@ using CommanderGQL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommanderGQL.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230309184755_AddCommandsToDB")]
+    partial class AddCommandsToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,12 +40,16 @@ namespace CommanderGQL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PlatformId")
+                    b.Property<string>("PlatformId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlatformId1")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlatformId");
+                    b.HasIndex("PlatformId1");
 
                     b.ToTable("Commands");
                 });
@@ -71,17 +78,12 @@ namespace CommanderGQL.Migrations
             modelBuilder.Entity("CommanderGQL.Models.Command", b =>
                 {
                     b.HasOne("CommanderGQL.Models.Platform", "Platform")
-                        .WithMany("Commands")
-                        .HasForeignKey("PlatformId")
+                        .WithMany()
+                        .HasForeignKey("PlatformId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Platform");
-                });
-
-            modelBuilder.Entity("CommanderGQL.Models.Platform", b =>
-                {
-                    b.Navigation("Commands");
                 });
 #pragma warning restore 612, 618
         }
