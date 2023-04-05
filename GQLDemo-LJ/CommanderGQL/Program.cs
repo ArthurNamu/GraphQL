@@ -20,6 +20,7 @@ builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddType<PlatformType>()
+    .AddMutationType<Mutation>()
     .AddType<CommandType>()
     .AddFiltering()
     .AddSorting()
