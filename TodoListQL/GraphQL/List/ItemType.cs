@@ -4,7 +4,7 @@ using TodoListQL.Models;
 
 namespace TodoListQL.GraphQL.List
 {
-    public class ListType : ObjectType<ItemList>
+    public class ItemType : ObjectType<ItemList>
     {
         protected override void Configure(IObjectTypeDescriptor<ItemList> descriptor)
         {

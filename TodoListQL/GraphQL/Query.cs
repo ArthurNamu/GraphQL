@@ -7,7 +7,7 @@ namespace TodoListQL.GraphQL
     public class Query
     {
         [UseDbContext(typeof(ApiDbContext))]
-      //  [UseProjection]
+        [UseProjection]
         [UseFiltering]
         [UseSorting]
         public IQueryable<ItemList> GetList([ScopedService] ApiDbContext context)
@@ -16,7 +16,7 @@ namespace TodoListQL.GraphQL
         }
 
         [UseDbContext(typeof(ApiDbContext))]
-      //  [UseProjection]
+        [UseProjection]
         [UseFiltering]
         [UseSorting]
         public IQueryable<ItemData> GetData([ScopedService] ApiDbContext context)

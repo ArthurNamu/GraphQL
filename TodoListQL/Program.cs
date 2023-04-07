@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using TodoListQL.Data;
 using TodoListQL.GraphQL;
-
+using TodoListQL.GraphQL.List;
 var builder = WebApplication.CreateBuilder(args);
 
 IConfiguration configuration = builder.Configuration;
@@ -15,9 +15,10 @@ options.UseSqlite(
 builder.Services
  .AddGraphQLServer()
  .AddQueryType<Query>()
- .AddType<TodoListQL.GraphQL.List.ListType>()
+ .AddType<ItemType>()
   .AddMutationType<Mutation>()
  .AddSorting()
+.AddFiltering()
   .AddProjections();
 
 var app = builder.Build();
