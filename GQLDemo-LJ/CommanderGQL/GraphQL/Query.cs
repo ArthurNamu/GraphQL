@@ -8,7 +8,7 @@ public class Query
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-   
+
     public IQueryable<Platform> GetPlatform([ScopedService] AppDBContext context)
     {
         return context.Platforms;

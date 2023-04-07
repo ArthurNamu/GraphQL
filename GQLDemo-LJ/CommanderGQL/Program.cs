@@ -37,7 +37,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapGraphQL();
 });
 
-app.UseGraphQLVoyager(path: "/graphql-voyager",  new VoyagerOptions()
+app.UseGraphQLVoyager(path: "/graphql-voyager", new VoyagerOptions()
 {
     GraphQLEndPoint = "/graphql"
 });
